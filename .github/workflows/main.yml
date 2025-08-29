@@ -39,7 +39,7 @@ jobs:
         run: |
           set -o xtrace
           git fetch --tags
-          KOPIA_VERSION="$(grep --only-matching --perl-regexp 'kopia/kopia:\K(.+)')"
+          KOPIA_VERSION="$(grep --only-matching --perl-regexp 'kopia/kopia:\K(.+)' Dockerfile)"
           MOST_RECENT_TAG="$(git describe --tags "$(git rev-list --tags --max-count=1)" 2> /dev/null || echo '0')"
           BUILD_NUMBER="$(echo "${MOST_RECENT_TAG}" | grep --perl-regexp --only-matching '\d+$')"
           BUILD_NUMBER="$((BUILD_NUMBER + 1))"
