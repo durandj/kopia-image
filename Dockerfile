@@ -2,11 +2,18 @@
 
 FROM kopia/kopia:0.21.1
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # hadolint ignore=DL3008
 RUN set -o errexit -o nounset -o xtrace \
 	&& apt-get update \
 	&& apt-get install --yes --no-install-recommends \
+		gnupg \
+	&& curl -fsSL https://repo.charm.sh/apt/gpg.key | gpg --dearmor -o /etc/apt/keyrings/charm.gpg \
+	&& echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | tee /etc/apt/sources.list.d/charm.list \
+	&& apt-get update \
+	&& apt-get install --yes --no-install-recommends \
+		gum \
 		jq \
 	&& apt-get clean autoclean --yes \
 	&& apt-get autoremove --yes \
