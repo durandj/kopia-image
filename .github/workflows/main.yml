@@ -28,7 +28,7 @@ jobs:
         uses: hadolint/hadolint-action@v3.3.0
 
       - name: Build container image
-        uses: docker/build-push-action@v6.18.0
+        uses: docker/build-push-action@v6.19.2
         with:
           push: false
 
@@ -67,7 +67,7 @@ jobs:
 
       - name: Build container image
         id: push
-        uses: docker/build-push-action@v6.18.0
+        uses: docker/build-push-action@v6.19.2
         with:
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
