@@ -15,6 +15,6 @@ jobs:
         uses: hadolint/hadolint-action@v3.3.0
 
       - name: Build container image
-        uses: docker/build-push-action@v7.0.0
+        uses: docker/build-push-action@v7.1.0
         with:
           push: false
