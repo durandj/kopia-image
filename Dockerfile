@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM kopia/kopia:0.23.0
+FROM kopia/kopia:0.23.1
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
